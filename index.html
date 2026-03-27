@@ -910,6 +910,27 @@
     animation: fadeUp 0.7s 0.35s ease both;
   }
 
+
+  .sobre-photo-wrap {
+    width: 180px;
+    height: 180px;
+    border: 4px solid var(--black);
+    box-shadow: 8px 8px 0 var(--lime);
+    margin-bottom: 28px;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sobre-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
   /* ── TICKER ── */
   .ticker {
     background: var(--pink);
@@ -972,7 +993,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">REAL<span>TALK</span> EN</a>
+  <a href="#" class="nav-logo">REAL<span>TALK</span> ENGLISH</a>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre mí</a></li>
     <li><a href="#niveles">Niveles</a></li>
@@ -1031,6 +1052,10 @@
 <section class="sobre" id="sobre">
   <div class="sobre-left">
     <div class="section-label">Sobre mí</div>
+    <div class="sobre-photo-wrap">
+     <img src="valentina.jpg" alt="Valentina.jpg" class="sobre-photo">    
+
+    </div>
     <h2>HOLA,<br>SOY<br>VALEN.</h2>
     <p>Profesora bilingüe, con base en Bilbao. Llevo años enseñando inglés de forma práctica: nada de exámenes falsos, nada de gramática sin contexto. Mis clases se adaptan a lo que tú necesitas, no al revés.</p>
     <div class="chips">
@@ -1378,54 +1403,104 @@
       </div>
     </div>
 
-    <div class="booking-form">
-      <h3>RESERVA AQUÍ</h3>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" placeholder="Tu nombre">
-        </div>
-        <div class="form-group">
-          <label>Apellido</label>
-          <input type="text" placeholder="Tu apellido">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="tu@email.com">
-      </div>
-      <div class="form-group">
-        <label>¿Cuál es tu nivel?</label>
-        <select>
-          <option value="">Selecciona…</option>
-          <option>A1 – Principiante (desde cero)</option>
-          <option>A2 – Básico</option>
-          <option>B1 – Intermedio</option>
-          <option>B2 – Intermedio Alto</option>
-          <option>C1 – Avanzado</option>
-          <option>No sé / quiero que me evalúen</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Modalidad</label>
-        <select>
-          <option value="">Selecciona…</option>
-          <option>Online (videollamada)</option>
-          <option>Presencial en Bilbao</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>¿Qué quieres conseguir?</label>
-        <textarea placeholder="Cuéntame tu objetivo: examen, trabajo, viaje, recuperación…"></textarea>
-      </div>
-      <button class="form-submit">Quiero mi clase gratis →</button>
+    <div class="booking-buttons">
+      <a href="https://docs.google.com/forms/d/1HAPMgBY1X8ABZ4h5CDgWR0Y-sKCozwP49CBO3BqZtP0/preview" target="_blank" class="booking-big-btn free">
+        <span class="bbb-label">Primera vez aquí</span>
+        <span class="bbb-title">QUIERO MI CLASE GRATIS →</span>
+        <span class="bbb-sub">Sin coste · Sin compromiso</span>
+      </a>
+      <a href="https://docs.google.com/forms/d/1Bbn4zQNN5PEkuZhI2nI47mPEbWwlwTCdZVzVjms15vA/preview" target="_blank" class="booking-big-btn book">
+        <span class="bbb-label">Ya sé lo que quiero</span>
+        <span class="bbb-title">RESERVAR UNA CLASE →</span>
+        <span class="bbb-sub">15€ / hora · Online o Bilbao</span>
+      </a>
     </div>
+
+    <style>
+      .booking-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .booking-big-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 32px 36px;
+        border: 3px solid var(--black);
+        text-decoration: none;
+        transition: transform 0.12s, box-shadow 0.12s;
+        cursor: crosshair;
+      }
+
+      .booking-big-btn.free {
+        background: var(--black);
+        box-shadow: 6px 6px 0 var(--lime);
+      }
+
+      .booking-big-btn.free:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 10px 10px 0 var(--lime);
+      }
+
+      .booking-big-btn.book {
+        background: var(--pink);
+        box-shadow: 6px 6px 0 var(--black);
+      }
+
+      .booking-big-btn.book:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 10px 10px 0 var(--black);
+      }
+
+      .bbb-label {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--lime);
+      }
+
+      .booking-big-btn.book .bbb-label {
+        color: var(--black);
+        opacity: 0.7;
+      }
+
+      .bbb-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 32px;
+        letter-spacing: 2px;
+        color: var(--white);
+        line-height: 1;
+      }
+
+      .booking-big-btn.book .bbb-title {
+        color: var(--black);
+      }
+
+      .bbb-sub {
+        font-size: 12px;
+        font-weight: 700;
+        color: #888;
+        margin-top: 4px;
+      }
+
+      .booking-big-btn.book .bbb-sub {
+        color: var(--black);
+        opacity: 0.6;
+      }
+
+      @media (max-width: 900px) {
+        .booking-buttons { flex-direction: column; }
+      }
+    </style>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">REAL<span>TALK</span> EN</div>
+  <div class="footer-logo">REAL<span>TALK</span> ENGLISH</div>
   <div class="footer-copy">© 2025 Real Talk English · Bilbao</div>
   <div class="footer-links">
     <a href="#sobre">Sobre mí</a>
