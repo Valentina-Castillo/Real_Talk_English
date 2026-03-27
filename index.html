@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Talk English – Clases de Inglés en Bilbao</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #FF3CAC;
+    --lime: #C8FF00;
+    --orange: #FF6B1A;
+    --black: #0A0A0A;
+    --white: #F5F5F0;
+    --yellow: #FFE500;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Syne', sans-serif;
+    cursor: crosshair;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--black);
+    border-bottom: 3px solid var(--pink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 56px;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--lime);
+    letter-spacing: 3px;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--pink); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--lime); }
+
+  .nav-cta {
+    background: var(--pink);
+    color: var(--black) !important;
+    padding: 7px 16px;
+    border: 2px solid var(--black);
+    box-shadow: 3px 3px 0 var(--lime);
+    transition: all 0.15s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--lime) !important;
+    color: var(--black) !important;
+    box-shadow: 5px 5px 0 var(--pink) !important;
+    transform: translate(-1px, -1px);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    padding: 80px 60px 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin-bottom: 28px;
+    width: fit-content;
+    border: 2px solid var(--black);
+    box-shadow: 4px 4px 0 var(--pink);
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 7vw, 100px);
+    line-height: 0.93;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 .accent-pink { color: var(--pink); }
+  .hero h1 .accent-lime { color: var(--lime); }
+
+  .hero-sub {
+    font-size: 16px;
+    color: #aaa;
+    line-height: 1.65;
+    max-width: 380px;
+    margin-bottom: 44px;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border: 3px solid var(--black);
+    cursor: crosshair;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.12s;
+  }
+
+  .btn-primary {
+    background: var(--pink);
+    color: var(--black);
+    box-shadow: 5px 5px 0 var(--lime);
+  }
+
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--lime);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+    box-shadow: 5px 5px 0 #333;
+  }
+
+  .btn-secondary:hover {
+    background: var(--white);
+    color: var(--black);
+    box-shadow: 8px 8px 0 var(--orange);
+    transform: translate(-2px, -2px);
+  }
+
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    padding: 80px 64px 80px 0;
+  }
+
+  .hero-card {
+    background: var(--white);
+    border: 3px solid var(--lime);
+    box-shadow: 10px 10px 0 var(--pink);
+    padding: 40px;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .hero-card .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .hero-stat {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 2px dashed #ddd;
+  }
+
+  .hero-stat:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--black);
+  }
+
+  .stat-num.orange { color: var(--orange); }
+  .stat-num.pink { color: var(--pink); }
+
+  .stat-text {
+    padding-top: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #555;
+    font-weight: 700;
+  }
+
+  /* ── SOBRE MÍ ── */
+  .sobre {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+    border-top: 4px solid var(--black);
+  }
+
+  .sobre-left {
+    background: var(--pink);
+    padding: 80px 60px;
+    border-right: 4px solid var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sobre-left::after {
+    content: "REAL\ATALK";
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 180px;
+    color: rgba(0,0,0,0.07);
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    line-height: 0.85;
+    white-space: pre;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 3px;
+    background: var(--black);
+  }
+
+  .sobre-left h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 0.9;
+    color: var(--black);
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sobre-left p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--black);
+    max-width: 380px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .chip {
+    background: var(--black);
+    color: var(--lime);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 2px solid var(--black);
+  }
+
+  .sobre-right {
+    background: var(--white);
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .sobre-right h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--black);
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+  }
+
+  .feature-list {
+    list-style: none;
+  }
+
+  .feature-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 2px solid #eee;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .feature-list li:last-child { border-bottom: none; }
+
+  .feature-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--lime);
+    border: 2px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+
+  /* ── NIVELES ── */
+  .niveles {
+    background: var(--black);
+    padding: 100px 64px;
+    border-top: 4px solid var(--black);
+  }
+
+  .niveles .section-label { color: var(--lime); }
+  .niveles .section-label::before { background: var(--lime); }
+
+  .niveles h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: var(--white);
+    margin-bottom: 60px;
+    line-height: 0.9;
+  }
+
+  .niveles h2 span { color: var(--orange); }
+
+  .niveles-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 3px solid var(--white);
+  }
+
+  .nivel-card {
+    border-right: 3px solid var(--white);
+    padding: 36px 24px;
+    position: relative;
+    transition: background 0.15s;
+    cursor: crosshair;
+  }
+
+  .nivel-card:last-child { border-right: none; }
+
+  .nivel-card:hover { background: #1a1a1a; }
+
+  .nivel-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .nivel-card:nth-child(1) .nivel-badge { color: var(--lime); }
+  .nivel-card:nth-child(2) .nivel-badge { color: var(--orange); }
+  .nivel-card:nth-child(3) .nivel-badge { color: var(--pink); }
+  .nivel-card:nth-child(4) .nivel-badge { color: var(--yellow); }
+  .nivel-card:nth-child(5) .nivel-badge { color: #fff; }
+
+  .nivel-name {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 14px;
+  }
+
+  .nivel-desc {
+    font-size: 12px;
+    line-height: 1.65;
+    color: #aaa;
+  }
+
+  .nivel-topics {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .nivel-topic {
+    font-size: 11px;
+    color: #666;
+    padding: 4px 0;
+    border-top: 1px solid #222;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nivel-topic::before {
+    content: '›';
+    color: var(--pink);
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  /* ── PRECIOS ── */
+  .precios {
+    background: var(--lime);
+    padding: 100px 64px;
+    border-top: 4px solid var(--black);
+  }
+
+  .precios .section-label { color: var(--black); }
+
+  .precios h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: var(--black);
+    margin-bottom: 60px;
+    line-height: 0.9;
+  }
+
+  .precios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .precio-card {
+    background: var(--white);
+    border: 3px solid var(--black);
+    padding: 48px 36px;
+    position: relative;
+    margin-right: -3px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .precio-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0 var(--black);
+    z-index: 1;
+  }
+
+  .precio-card.featured {
+    background: var(--black);
+    color: var(--white);
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0 var(--pink);
+    z-index: 2;
+  }
+
+  .precio-card.featured:hover {
+    box-shadow: 12px 12px 0 var(--pink);
+  }
+
+  .precio-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .precio-card.featured .precio-tag { color: var(--lime); }
+
+  .precio-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .precio-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    line-height: 1;
+    color: var(--black);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .precio-card.featured .precio-amount { color: var(--lime); }
+
+  .precio-amount .euro {
+    font-size: 32px;
+    margin-top: 12px;
+  }
+
+  .precio-amount .per {
+    font-size: 14px;
+    color: #888;
+    align-self: flex-end;
+    padding-bottom: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+  }
+
+  .precio-card.featured .precio-amount .per { color: #aaa; }
+
+  .precio-divider {
+    height: 3px;
+    background: var(--lime);
+    margin: 24px 0;
+  }
+
+  .precio-card.featured .precio-divider { background: var(--pink); }
+
+  .precio-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .precio-features li {
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  .precio-card.featured .precio-features li { color: #ccc; }
+
+  .precio-features li::before {
+    content: '✓';
+    color: var(--pink);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .precio-card.featured .precio-features li::before { color: var(--lime); }
+
+  /* ── REVIEWS ── */
+  .reviews {
+    background: var(--white);
+    padding: 100px 64px;
+    border-top: 4px solid var(--black);
+  }
+
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .reviews h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 0.9;
+    color: var(--black);
+  }
+
+  .reviews h2 span { color: var(--pink); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .review-card {
+    border: 3px solid var(--black);
+    padding: 32px;
+    background: var(--white);
+    transition: all 0.15s;
+    cursor: crosshair;
+    position: relative;
+  }
+
+  .review-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0 var(--black);
+  }
+
+  .review-card:nth-child(1) { background: var(--black); color: var(--white); }
+  .review-card:nth-child(1):hover { box-shadow: 8px 8px 0 var(--lime); }
+  .review-card:nth-child(4) { background: var(--orange); }
+  .review-card:nth-child(4):hover { box-shadow: 8px 8px 0 var(--black); }
+
+  .stars {
+    color: var(--yellow);
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .review-card:nth-child(1) .stars { color: var(--lime); }
+
+  .review-text {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    color: inherit;
+  }
+
+  .review-card:nth-child(1) .review-text { color: #ccc; }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 2px solid currentColor;
+    padding-top: 16px;
+    opacity: 0.7;
+  }
+
+  .review-avatar {
+    width: 36px;
+    height: 36px;
+    border: 2px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .review-info .name {
+    font-size: 13px;
+    font-weight: 800;
+    display: block;
+  }
+
+  .review-info .nivel {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* ── FORMULARIO ── */
+  .booking {
+    background: var(--orange);
+    padding: 100px 64px;
+    border-top: 4px solid var(--black);
+  }
+
+  .booking-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .booking-left h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 0.9;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+
+  .booking-left p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--black);
+    margin-bottom: 32px;
+    max-width: 380px;
+  }
+
+  .booking-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .info-row {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+  }
+
+  .info-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--black);
+    color: var(--lime);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    border: 2px solid var(--black);
+  }
+
+  .booking-form {
+    background: var(--black);
+    border: 3px solid var(--black);
+    box-shadow: 8px 8px 0 var(--pink);
+    padding: 48px;
+  }
+
+  .booking-form h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--lime);
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: #1a1a1a;
+    border: 2px solid #333;
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.15s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--lime);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--pink);
+    color: var(--black);
+    border: 3px solid var(--pink);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px;
+    cursor: crosshair;
+    box-shadow: 5px 5px 0 var(--lime);
+    transition: all 0.12s;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--lime);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 4px solid var(--pink);
+    padding: 48px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--lime);
+    letter-spacing: 3px;
+  }
+
+  .footer-logo span { color: var(--pink); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: #555;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--lime); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.55s; }
+
+  .hero-right {
+    animation: fadeUp 0.7s 0.35s ease both;
+  }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--pink);
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 18s linear infinite;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 4px;
+    color: var(--black);
+  }
+
+  .ticker-inner span {
+    margin: 0 40px;
+    color: var(--black);
+  }
+
+  .ticker-inner .dot {
+    color: var(--white);
+    margin: 0 20px;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .sobre, .booking-inner { grid-template-columns: 1fr; }
+    .hero-right { padding: 0 32px 60px; }
+    .hero-left { padding: 60px 32px; }
+    .sobre-left { border-right: none; border-bottom: 4px solid var(--black); padding: 60px 32px; }
+    .sobre-right { padding: 60px 32px; }
+    .niveles-grid { grid-template-columns: 1fr 1fr; }
+    .nivel-card:nth-child(3) { border-top: 3px solid var(--white); }
+    .precios-grid { grid-template-columns: 1fr; }
+    .precio-card { margin-right: 0; margin-bottom: -3px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .niveles, .precios, .reviews, .booking { padding: 60px 32px; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    footer { padding: 40px 32px; }
+  }
+
+  @media (max-width: 600px) {
+    .niveles-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">REAL<span>TALK</span> EN</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#niveles">Niveles</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="https://docs.google.com/forms/d/1HAPMgBY1X8ABZ4h5CDgWR0Y-sKCozwP49CBO3BqZtP0/preview" target="_blank" class="nav-cta">Clase gratis →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">📍 Bilbao · Online &amp; Presencial</div>
+    <h1>
+      APRENDE<br>
+      <span class="accent-pink">INGLÉS</span><br>
+      DE<br>
+      <span class="accent-lime">VERDAD</span>
+    </h1>
+    <p class="hero-sub">
+      Clases personalizadas de A1 a C1. Sin rollos, sin memorizar reglas al vacío. Inglés que funciona en la vida real.
+    </p>
+    <div class="hero-btns">
+      <a href="https://docs.google.com/forms/d/1HAPMgBY1X8ABZ4h5CDgWR0Y-sKCozwP49CBO3BqZtP0/preview" target="_blank" class="btn btn-primary">Clase gratis →</a>
+      <a href="#niveles" class="btn btn-secondary">Ver niveles</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="label">✦ Por qué Real Talk</div>
+      <div class="hero-stat">
+        <span class="stat-num orange">A1</span>
+        <div class="stat-text">Empezamos desde cero si hace falta. Sin vergüenza.</div>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num pink">1:1</span>
+        <div class="stat-text">Clases individuales, al ritmo que necesitas tú.</div>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">EN/ES</span>
+        <div class="stat-text">Bilingual teacher. Cambio de código cuando haga falta.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    REAL TALK ENGLISH <span class="dot">✦</span> BILBAO <span class="dot">✦</span> ONLINE &amp; PRESENCIAL <span class="dot">✦</span> A1 → C1 <span class="dot">✦</span> CLASE GRATIS <span class="dot">✦</span> INGLÉS QUE FUNCIONA <span class="dot">✦</span>
+    REAL TALK ENGLISH <span class="dot">✦</span> BILBAO <span class="dot">✦</span> ONLINE &amp; PRESENCIAL <span class="dot">✦</span> A1 → C1 <span class="dot">✦</span> CLASE GRATIS <span class="dot">✦</span> INGLÉS QUE FUNCIONA <span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- SOBRE MÍ -->
+<section class="sobre" id="sobre">
+  <div class="sobre-left">
+    <div class="section-label">Sobre mí</div>
+    <h2>HOLA,<br>SOY<br>VALEN.</h2>
+    <p>Profesora bilingüe, con base en Bilbao. Llevo años enseñando inglés de forma práctica: nada de exámenes falsos, nada de gramática sin contexto. Mis clases se adaptan a lo que tú necesitas, no al revés.</p>
+    <div class="chips">
+      <span class="chip">Bilingüe EN/ES</span>
+      <span class="chip">C1 Certificate</span>
+      <span class="chip">Online &amp; Presencial</span>
+      <span class="chip">Tailored classes</span>
+    </div>
+  </div>
+  <div class="sobre-right">
+    <h3>¿Cómo trabajo?</h3>
+    <ul class="feature-list">
+      <li>
+        <div class="feature-icon">🎯</div>
+        <div><strong>Diagnóstico gratuito.</strong> Primero vemos dónde estás y qué necesitas. Sin compromiso.</div>
+      </li>
+      <li>
+        <div class="feature-icon">📋</div>
+        <div><strong>Plan personalizado.</strong> Diseño el plan según tus objetivos: examen, trabajo, viaje o simplemente hablar.</div>
+      </li>
+      <li>
+        <div class="feature-icon">💬</div>
+        <div><strong>100% conversacional.</strong> Aprenderás a comunicarte de verdad, no a repetir listas de vocabulario.</div>
+      </li>
+      <li>
+        <div class="feature-icon">📈</div>
+        <div><strong>Seguimiento real.</strong> Feedback constante, materiales a medida y flexibilidad de horarios.</div>
+      </li>
+      <li>
+        <div class="feature-icon">🌍</div>
+        <div><strong>Flexibilidad total.</strong> Online o presencial en Bilbao, tú eliges.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- NIVELES -->
+<section class="niveles" id="niveles">
+  <div class="section-label">Niveles</div>
+  <h2>¿EN QUÉ<br>NIVEL<br><span>ESTÁS?</span></h2>
+  <div class="niveles-grid">
+
+    <div class="nivel-card">
+      <span class="nivel-badge">A1</span>
+      <div class="nivel-name">Principiante</div>
+      <p class="nivel-desc">Empezamos desde cero. Presentarte, saludar, números, colores y rutinas básicas.</p>
+      <div class="nivel-topics">
+        <div class="nivel-topic">Vocabulario esencial</div>
+        <div class="nivel-topic">Verb to be</div>
+        <div class="nivel-topic">Frases del día a día</div>
+        <div class="nivel-topic">Pronunciación básica</div>
+      </div>
+    </div>
+
+    <div class="nivel-card">
+      <span class="nivel-badge">A2</span>
+      <div class="nivel-name">Básico</div>
+      <p class="nivel-desc">Puedes entender frases simples. Trabajamos presente simple, rutinas y descripción.</p>
+      <div class="nivel-topics">
+        <div class="nivel-topic">Present simple/continuous</div>
+        <div class="nivel-topic">Can / can't</div>
+        <div class="nivel-topic">There is / are</div>
+        <div class="nivel-topic">Descripciones</div>
+      </div>
+    </div>
+
+    <div class="nivel-card">
+      <span class="nivel-badge">B1</span>
+      <div class="nivel-name">Intermedio</div>
+      <p class="nivel-desc">Ya te defiendes. Consolidamos tiempos verbales, conectores y opinión propia.</p>
+      <div class="nivel-topics">
+        <div class="nivel-topic">Past simple &amp; continuous</div>
+        <div class="nivel-topic">Future forms</div>
+        <div class="nivel-topic">Expressing opinion</div>
+        <div class="nivel-topic">Reading comprensión</div>
+      </div>
+    </div>
+
+    <div class="nivel-card">
+      <span class="nivel-badge">B2</span>
+      <div class="nivel-name">Intermedio Alto</div>
+      <p class="nivel-desc">Buen nivel de comunicación. Trabajamos fluidez, matices y preparación de exámenes.</p>
+      <div class="nivel-topics">
+        <div class="nivel-topic">Conditionals</div>
+        <div class="nivel-topic">Passive voice</div>
+        <div class="nivel-topic">Debate &amp; argumentation</div>
+        <div class="nivel-topic">Exam prep (Cambridge)</div>
+      </div>
+    </div>
+
+    <div class="nivel-card">
+      <span class="nivel-badge">C1</span>
+      <div class="nivel-name">Avanzado</div>
+      <p class="nivel-desc">Inglés casi nativo. Pulimos estilo, registro, escritura profesional y comunicación avanzada.</p>
+      <div class="nivel-topics">
+        <div class="nivel-topic">Advanced writing</div>
+        <div class="nivel-topic">Idiomatic expressions</div>
+        <div class="nivel-topic">Registro formal/informal</div>
+        <div class="nivel-topic">Business English</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="precios" id="precios">
+  <div class="section-label">Tarifas</div>
+  <h2>15€<br>LA HORA.<br>ASÍ DE CLARO.</h2>
+  <div class="precios-grid">
+
+    <div class="precio-card">
+      <span class="precio-tag">✦ Clase particular</span>
+      <div class="precio-name">Online</div>
+      <div class="precio-amount">
+        <span class="euro">€</span>
+        <span>15</span>
+        <span class="per">/ hora</span>
+      </div>
+      <div class="precio-divider"></div>
+      <ul class="precio-features">
+        <li>60 minutos 1 a 1</li>
+        <li>Videollamada (donde estés)</li>
+        <li>Material incluido</li>
+        <li>Horario flexible</li>
+      </ul>
+      <a href="https://docs.google.com/forms/d/1Bbn4zQNN5PEkuZhI2nI47mPEbWwlwTCdZVzVjms15vA/preview" target="_blank" class="btn btn-primary" style="display:block;text-align:center;">Reservar →</a>
+    </div>
+
+    <div class="precio-card featured">
+      <span class="precio-tag">★ Primera clase</span>
+      <div class="precio-name">Clase Gratis</div>
+      <div class="precio-amount">
+        <span class="euro">€</span>
+        <span>0</span>
+        <span class="per">/ 1 hora</span>
+      </div>
+      <div class="precio-divider"></div>
+      <ul class="precio-features">
+        <li>Sin coste, sin compromiso</li>
+        <li>Evaluamos tu nivel juntos</li>
+        <li>Diseñamos tu plan</li>
+        <li>Online o presencial Bilbao</li>
+        <li>Reserva en menos de 24h</li>
+      </ul>
+      <a href="https://docs.google.com/forms/d/1HAPMgBY1X8ABZ4h5CDgWR0Y-sKCozwP49CBO3BqZtP0/preview" target="_blank" class="btn btn-primary" style="display:block;text-align:center;">Quiero la mía →</a>
+    </div>
+
+    <div class="precio-card">
+      <span class="precio-tag">✦ Clase particular</span>
+      <div class="precio-name">Presencial</div>
+      <div class="precio-amount">
+        <span class="euro">€</span>
+        <span>15</span>
+        <span class="per">/ hora</span>
+      </div>
+      <div class="precio-divider"></div>
+      <ul class="precio-features">
+        <li>60 minutos 1 a 1</li>
+        <li>En Bilbao (lugar a acordar)</li>
+        <li>Material incluido</li>
+        <li>Horario flexible</li>
+      </ul>
+      <a href="https://docs.google.com/forms/d/1Bbn4zQNN5PEkuZhI2nI47mPEbWwlwTCdZVzVjms15vA/preview" target="_blank" class="btn btn-primary" style="display:block;text-align:center;">Reservar →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="section-label">Reviews</div>
+  <h2>¿QUÉ TAL<br>LA CLASE?<br><span>CUÉNTALO.</span></h2>
+
+  <div class="review-cta-block">
+    <div class="review-cta-left">
+      <p>Las mejores referencias son las de los propios alumnos. Si has tenido una clase conmigo y quieres compartir tu experiencia, te lo agradezco un montón — y ayuda a que más gente se anime.</p>
+      <div class="review-stars-big">★★★★★</div>
+      <a href="https://share.google/Vy60Xm3R3Q0LqmQkb" target="_blank" class="btn btn-primary review-btn">Dejar mi reseña en Google →</a>
+    </div>
+    <div class="review-cta-right">
+      <div class="review-badge">
+        <div class="badge-g">G</div>
+        <div class="badge-info">
+          <span class="badge-title">Real Talk English</span>
+          <span class="badge-sub">Reseñas de Google</span>
+          <span class="badge-stars">★★★★★</span>
+        </div>
+      </div>
+      <div class="review-steps">
+        <div class="step"><span class="step-num">1</span><span>Haz clic en el botón</span></div>
+        <div class="step"><span class="step-num">2</span><span>Inicia sesión con tu cuenta de Google</span></div>
+        <div class="step"><span class="step-num">3</span><span>Escribe tu experiencia y elige las estrellas</span></div>
+        <div class="step"><span class="step-num">4</span><span>¡Listo! Gracias de verdad 🙌</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews h2 { margin-bottom: 48px; }
+
+  .review-cta-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .review-cta-left p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #444;
+    margin-bottom: 28px;
+    max-width: 420px;
+  }
+
+  .review-stars-big {
+    font-size: 36px;
+    letter-spacing: 6px;
+    color: var(--yellow);
+    margin-bottom: 28px;
+    text-shadow: 0 0 0 var(--black);
+    -webkit-text-stroke: 1px #ccc;
+  }
+
+  .review-btn {
+    display: inline-block;
+  }
+
+  .review-cta-right {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .review-badge {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--black);
+    border: 3px solid var(--black);
+    box-shadow: 6px 6px 0 var(--lime);
+    padding: 24px 28px;
+  }
+
+  .badge-g {
+    width: 56px;
+    height: 56px;
+    background: var(--lime);
+    border: 3px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+
+  .badge-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .badge-title {
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--white);
+  }
+
+  .badge-sub {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #666;
+  }
+
+  .badge-stars {
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--yellow);
+  }
+
+  .review-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+  }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    background: var(--pink);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--black);
+    box-shadow: 2px 2px 0 var(--black);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .review-cta-block { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- BOOKING -->
+<section class="booking" id="reservar">
+  <div class="booking-inner">
+    <div class="booking-left">
+      <div class="section-label" style="color:var(--black);">Reservar</div>
+      <h2>TU CLASE<br>GRATIS<br>TE ESPERA.</h2>
+      <p>Primera clase sin coste, sin compromiso. Rellena el formulario y te contacto en menos de 24 horas para fijar fecha y hora.</p>
+      <div class="booking-info">
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          Bilbao (presencial) o donde estés (online)
+        </div>
+        <div class="info-row">
+          <div class="info-icon">⏰</div>
+          Lunes a viernes · tardes
+        </div>
+        <div class="info-row">
+          <div class="info-icon">⏰</div>
+          Sábados y domingos · mañanas
+        </div>
+        <div class="info-row">
+          <div class="info-icon">✉️</div>
+          thevalentinacastillo@gmail.com
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-form">
+      <h3>RESERVA AQUÍ</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Apellido</label>
+          <input type="text" placeholder="Tu apellido">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label>¿Cuál es tu nivel?</label>
+        <select>
+          <option value="">Selecciona…</option>
+          <option>A1 – Principiante (desde cero)</option>
+          <option>A2 – Básico</option>
+          <option>B1 – Intermedio</option>
+          <option>B2 – Intermedio Alto</option>
+          <option>C1 – Avanzado</option>
+          <option>No sé / quiero que me evalúen</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Modalidad</label>
+        <select>
+          <option value="">Selecciona…</option>
+          <option>Online (videollamada)</option>
+          <option>Presencial en Bilbao</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>¿Qué quieres conseguir?</label>
+        <textarea placeholder="Cuéntame tu objetivo: examen, trabajo, viaje, recuperación…"></textarea>
+      </div>
+      <button class="form-submit">Quiero mi clase gratis →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">REAL<span>TALK</span> EN</div>
+  <div class="footer-copy">© 2025 Real Talk English · Bilbao</div>
+  <div class="footer-links">
+    <a href="#sobre">Sobre mí</a>
+    <a href="#niveles">Niveles</a>
+    <a href="#precios">Precios</a>
+    <a href="#reservar">Contacto</a>
+  </div>
+</footer>
+
+</body>
+</html>
